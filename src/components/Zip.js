@@ -5,10 +5,10 @@ function Zip(props) {
     const [validationError, setValidationError] = useState(null);
 
     const validate = (event) => {
-        const zipCodePattern = [A-Za-z]{25};
+        const zipCodePattern = /^\d{5}$/;
         const valid = zipCodePattern.test(event.target.value);
         if (!valid) {
-            setValidationError('Should be name of a city');
+            setValidationError('* should be a 5 digit number only');
             props.clearResponse();
         } else {
             setValidationError('');
