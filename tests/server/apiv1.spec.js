@@ -89,7 +89,7 @@ describe('Get Weather', function() {
     assert(resMock.send.lastCall.args[0].msg === 'Failed', 'Unexpected response:' + resMock.send.lastCall.args);
   });
 
-  it('with valid city name', function() {
+  it('with valid zip code', function() {
     reqMock = {
       query: {
         zip: 79968
@@ -105,7 +105,7 @@ describe('Get Weather', function() {
         }
       ],
       main: {
-        temp: 12
+        temp: 78
       }
     };
 
