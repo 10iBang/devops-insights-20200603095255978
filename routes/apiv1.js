@@ -11,8 +11,8 @@ var OPENWEATHERURL = "https://api.openweathermap.org/data/2.5/weather?appid=6b7b
 
 exports.getWeather = function(req, res) {
 	var q = req.query.q;
-	if( (zip === null) || (typeof(zip) === 'undefined') ) {
-		return res.status(400).send('zip missing');
+	if( (q === null) || (typeof(q) === 'undefined') ) {
+		return res.status(400).send('City is missing');
 	}
 
 	var aurl = OPENWEATHERURL + '&q=' + q + ',NZ';
@@ -72,7 +72,7 @@ router.get('/getWeather2', exports.getWeather2);
 */
 exports.getWeather3 = function(req, res) {
 	var q = req.query.q;
-	if( (zip === null) || (typeof(zip) === 'undefined') ) {
+	if( (q === null) || (typeof(q) === 'undefined') ) {
 		return res.status(400).send('City is missing');
 	}
 
