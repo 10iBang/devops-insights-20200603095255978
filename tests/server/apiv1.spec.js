@@ -54,7 +54,7 @@ describe('Get Weather', function() {
   it('with valid zip code and error from request call', function() {
     reqMock = {
       query: {
-        zip: 79968
+        q: 79968
       }
     };
 
