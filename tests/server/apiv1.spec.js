@@ -4,6 +4,12 @@ const apiv1 = requireHelper.require('routes/apiv1');
 const assert = require('chai').assert;
 const sinon = require('sinon');
 
+var rewire = require('rewire');
+var chai = require('chai');
+var expect = chai.expect;
+
+chai.config.includeStack = false;
+
 // create mock request and response
 let reqMock = {};
 
@@ -20,6 +26,16 @@ resMock.end = function() {
 sinon.spy(resMock, "status");
 sinon.spy(resMock, "send");
 
+describe('My test suite', function() {
+  beforeEach(function() {
+  });
+  afterEach(function() {
+  });
+  it('Test case', function(done) {
+    expect(true).to.be.equal(true);
+    done();
+  });
+});
 
 describe('Get Weather', function() {
 
@@ -38,7 +54,7 @@ describe('Get Weather', function() {
   it('with valid zip code and error from request call', function() {
     reqMock = {
       query: {
-        zip: 79968
+        q: 'Hamilton'
       }
     };
 
@@ -57,7 +73,7 @@ describe('Get Weather', function() {
   it('with incomplete zip code', function() {
     reqMock = {
       query: {
-        zip: 79968
+        q: 'Hamilton'
       }
     };
 
@@ -73,23 +89,23 @@ describe('Get Weather', function() {
     assert(resMock.send.lastCall.args[0].msg === 'Failed', 'Unexpected response:' + resMock.send.lastCall.args);
   });
 
-  it('with valid zip code', function() {
+  it('with valid city name', function() {
     reqMock = {
       query: {
-        zip: 79968
+        q: 'Hamilton'
       }
     };
 
     const body = {
       cod: 200,
-      name: 'El Paso',
+      name: 'Hamilton',
       weather: [
         {
           main: 'cold'
         }
       ],
       main: {
-        temp: 78
+        temp: 12
       }
     };
 
