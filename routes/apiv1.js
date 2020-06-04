@@ -10,12 +10,12 @@ var request = REQUEST.defaults( {
 var OPENWEATHERURL = "https://api.openweathermap.org/data/2.5/weather?appid=6b7b471967dd0851d0010cdecf28f829&units=metric";
 
 exports.getWeather = function(req, res) {
-	var q = req.query.q;
-	if( (q === null) || (typeof(q) === 'undefined') ) {
+	var zip = req.query.zip;
+	if( (zip === null) || (typeof(zip) === 'undefined') ) {
 		return res.status(400).send('zip missing');
 	}
 
-	var aurl = OPENWEATHERURL + '&q=' + q + ',NZ';
+	var aurl = OPENWEATHERURL + '&zip=' + zip + ',NZ';
 
 	request({
 		method: 'GET',
@@ -27,7 +27,7 @@ exports.getWeather = function(req, res) {
     		//console.error("Failed to send request to openweathermap.org", err);
     	} else {
     		if(body.cod === 200) {
-    			var weath = "Conditions are " + body.weather[0].main + " and temperature is " + body.main.temp + ' °';
+    			var weath = "Conditions are " + body.weather[0].main + " and temperature is " + body.main.temp + ' F';
     			var response = {city: body.name, weather: weath};
     			return res.status(200).send(response);
     		} else {
@@ -71,12 +71,12 @@ exports.getWeather2 = function(req, res) {
 router.get('/getWeather2', exports.getWeather2);
 */
 exports.getWeather3 = function(req, res) {
-	var q = req.query.q;
-	if( (q === null) || (typeof(q) === 'undefined') ) {
+	var zip = req.query.zip;
+	if( (zip === null) || (typeof(zip) === 'undefined') ) {
 		return res.status(400).send('City is missing');
 	}
 
-	var aurl = OPENWEATHERURL + '&q=' + q + ',NZ';
+	var aurl = OPENWEATHERURL + '&zip=' + zip + ',NZ';
 
 	request({
 		method: 'GET',
@@ -88,7 +88,7 @@ exports.getWeather3 = function(req, res) {
     		//console.error("Failed to send request to openweathermap.org", err);
     	} else {
     		if(body.cod === 200) {
-    			var weath = "Conditions are " + body.weather[0].main + " and temperature is " + body.main.temp + ' °';
+    			var weath = "Conditions are " + body.weather[0].main + " and temperature is " + body.main.temp + ' F';
     			var response = {city: body.name, weather: weath};
     			return res.status(200).send(response);
     		} else {
