@@ -19,27 +19,19 @@ function Zip(props) {
     return (
         <div className="col-sm-4">
             <div className="row">
-                <div className="col-sm-10">
+                <div id="map">
                     <style jsx="true">{`
                         .form-control::-webkit-input-placeholder {
                             color: #ddd;
                             
                         }
-                        
+                        #map{
+                        	height: 100%;
+                        }
                     `}
-                    </style>
-                    <input 
-                        type="text" 
-                        className="form-control" 
-                        id="usr" 
-                        placeholder="Enter city name (NZ)"
-                        onKeyPress={(event) => {
-                            if (event.key === "Enter") {
-                                validate(event);
-                            }
-                        }}
-                    ></input>   
+                    </style> 
                 </div>
+                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkUOdZ5y7hMm0yrcCQoCvLwzdM6M8s5qk&callback=initMap" async defer></script>
             </div>
             <div className="pl-3 row">
                 <div className="text-danger small"> { validationError }</div>
@@ -47,5 +39,13 @@ function Zip(props) {
         </div>
     );
 }
+var map;
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: -34.397, lng: 150.644},
+    zoom: 8
+  });
+}
+export default initMap
 
 export default Zip
