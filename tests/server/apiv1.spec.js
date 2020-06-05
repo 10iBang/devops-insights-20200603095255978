@@ -92,7 +92,7 @@ describe('Get Weather', function() {
   it('with valid zip code', function() {
     reqMock = {
       query: {
-        zip: 79968
+        zip: 'Hamilton'
       }
     };
 
