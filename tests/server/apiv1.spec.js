@@ -105,7 +105,7 @@ describe('Get Weather', function() {
         }
       ],
       main: {
-        temp: 78
+        temp: 13
       }
     };
 
