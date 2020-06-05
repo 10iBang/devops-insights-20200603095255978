@@ -23,7 +23,9 @@ function Zip(props) {
                     <style jsx="true">{`
                         .form-control::-webkit-input-placeholder {
                             color: #ddd;
+                            
                         }
+                        
                     `}
                     </style>
                     <input 
