@@ -51,10 +51,10 @@ describe('Get Weather', function() {
     assert(resMock.status.lastCall.calledWith(400), 'Unexpected status code:' + resMock.status.lastCall.args);
   });
 
-  it('with valid zip code and error from request call', function() {
+  it('with valid city name and error from request call', function() {
     reqMock = {
       query: {
-        zip: 'Hamiltoned'
+        zip: 'Hamilton'
       }
     };
 
@@ -70,10 +70,10 @@ describe('Get Weather', function() {
     assert(resMock.send.lastCall.calledWith('Failed to get the data'), 'Unexpected response:' + resMock.send.lastCall.args);
   });
 
-  it('with incomplete zip code', function() {
+  it('with incomplete city name', function() {
     reqMock = {
       query: {
-        zip: 'Hamiltoned'
+        zip: 'Hamilton'
       }
     };
 
@@ -89,23 +89,23 @@ describe('Get Weather', function() {
     assert(resMock.send.lastCall.args[0].msg === 'Failed', 'Unexpected response:' + resMock.send.lastCall.args);
   });
 
-  it('with valid zip code', function() {
+  it('with valid city name', function() {
     reqMock = {
       query: {
-        zip: 'Hamiltoned'
+        zip: 'Hamilton'
       }
     };
 
     const body = {
       cod: 200,
-      name: 'El Paso',
+      country: 'NZ',
       weather: [
         {
-          main: 'cold'
+          main: 'clear'
         }
       ],
       main: {
-        temp: 78
+        temp: 13
       }
     };
 
