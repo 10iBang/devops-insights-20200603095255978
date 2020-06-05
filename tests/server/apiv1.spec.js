@@ -98,14 +98,14 @@ describe('Get Weather', function() {
 
     const body = {
       cod: 200,
-      country: 'NZ',
+      name: 'El Paso',
       weather: [
         {
-          main: 'clear'
+          main: 'cold'
         }
       ],
       main: {
-        temp: 13
+        temp: 78
       }
     };
 
